@@ -14,9 +14,9 @@ function ProductUpload() {
   const [active, setActive] = useState(true)
   const [loading, setLoading] = useState(false)
   const {register, handleSubmit} = useForm()
+  const maxLength = 555
 
   const productUpload = async(data) => {
-    // console.log(data, URL.createObjectURL(images[0]), active)
     setError("")
     setLoading(true)
     try {
@@ -32,6 +32,7 @@ function ProductUpload() {
           data.name, data.description, data.price, img1, img2, img3, img4, data.brand || null, active, data.available_sku, session
         )
         if(product) {
+          console.log(product)
           setLoading(false)
           alert('Product Successfully Uploaded')
           window.location.reload()
@@ -74,6 +75,7 @@ function ProductUpload() {
                 type="textarea"
                 labelStyle="font-bold text-lg text-[#6a6e79]"
                 label= "Product Description"
+                maxLength={maxLength} 
                 required
                 placeholder="Product Description"
                 {...register("description", {

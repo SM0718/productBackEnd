@@ -19,7 +19,7 @@ function Header() {
   ]
 
   return (
-    <nav className='bg-[#eeeeee] h-screen w-16 xl:w-1/6 py-8 px-4 flex flex-col items-start gap-4'>
+    <nav className='bg-[#eeeeee] h-lvh w-16 xl:w-1/6 py-8 px-4 flex flex-col items-start gap-4'>
       <span className='hidden xl:flex justify-start items-center gap-2'>
         <Shop />
         <h1 className='font-bold'>
@@ -27,7 +27,7 @@ function Header() {
         </h1>
       </span>
       <ul className='hidden xl:flex flex-col gap-2'>
-        {
+        { 
         headerItems.map(item => <li key={item.slug}>
           <NavLink to={item.slug} className={({isActive}) => `${isActive? "text-[#2862fa] font-bold" : ""}`}>
             {

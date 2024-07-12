@@ -18,7 +18,7 @@ function MyProducts() {
       const product = await getProducts()
       if(product){
         setData(product)
-       console.log(product[0].$id)
+       console.log(product)
       } 
     } catch (error) {
       console.log(error)
@@ -28,7 +28,7 @@ function MyProducts() {
   const ImgPreview = (file, className) => {
     const img = service.getFilePreview(file.file)
     return (
-      <img className={`${className} h-full rounded-xl`} src={img.href} />
+      <img className={`${className} w-full h-full rounded-xl`} src={img.href} />
     )
 
   }
@@ -47,14 +47,14 @@ function MyProducts() {
 
   
   return (
-    <div className='w-full flex flex-col justify-start items-center py-8 px-8'>
+    <div className='w-full flex flex-col justify-start items-center py-8 px-8 overflow-y-scroll'>
       <h1 className='text-4xl font-bold text-center pt-8 pb-16'>My Products <span>{data && data.length}</span></h1>
       
-      <div className='w-full flex gap-4'>
+      <div className='w-full flex justify-center lg:justify-start flex-wrap gap-4 '>
         { data? data.map((item, index) => 
 
-              <div key={index} className='relative group w-1/4 h-[400px] flex flex-col justify-center items-center p-2 bg-slate-200 rounded-lg'>
-              <div className='w-[250px] h-[250px]'>
+              <div key={index} className='relative group w-[250px] lg:w-[300px] h-[400px] flex flex-col justify-center items-center p-2 bg-slate-200 rounded-lg'>
+              <div className='w-[200px] lg:w-[250px] h-[200px] lg:h-[250px]'>
                   <ImgPreview file={item.pic1}/>
               </div>
 
@@ -64,7 +64,7 @@ function MyProducts() {
                   <p className='w-full text-center font-bold text-yellow-600'>Rs {item.price}</p>
               </div>
               <div className='absolute group/item flex flex-col top-4 right-2'>
-                  <Button className={`hidden group-hover:flex w-full  rounded-full`}><Hamburger /></Button>
+                  <Button className={`hidden group-hover:flex group-hover/item:hidden w-full  rounded-full`}><Hamburger /></Button>
 
                  <div className='hidden group-hover/item:flex flex-col bg-white p-2'>
                   <Button className={'font-bold text-start hover:bg-slate-300 p-1'}>Edit</Button>
